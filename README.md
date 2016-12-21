@@ -5,7 +5,6 @@ Just a small catalog of Webpack tips and tricks I've learned.
 Table of contents
 -----------------
 
-  * [Table of contents](#table-of-contents)
   * [Progress reporting](#progress-reporting)
   * [Minification](#minification)
   * [Multiple bundles](#multiple-bundles)
