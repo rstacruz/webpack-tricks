@@ -76,7 +76,7 @@ module.exports = {
   },
 
   output: {
-    filename: 'bundle.js'
+    filename: '[name].js'
   },
 
   plugins: [
