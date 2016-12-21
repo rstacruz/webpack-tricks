@@ -89,7 +89,7 @@ How this works:
 - CommonsChunkPlugin will remove these libraries from `app.js` (because it appears in 2 bundles now)
 - CommonsChunkPlugin also moves the Webpack runtime into `vendor.js`
 
-Reference: <https://webpack.github.io/docs/code-splitting.html#split-app-and-vendor-code>
+> Reference: [Code splitting](https://webpack.github.io/docs/code-splitting.html#split-app-and-vendor-code)
 
 Source maps
 -----------
@@ -112,6 +112,8 @@ Your files will now show up in Chrome Devtools as `webpack:///foo.js?a93h`. We w
     devtoolModuleFilenameTemplate: 'webpack:///[absolute-resource-path]'
   }
 ```
+
+> Reference: [devtool documentation](https://webpack.github.io/docs/configuration.html#devtool)
 
 CSS
 ---
