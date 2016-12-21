@@ -155,7 +155,7 @@ bootstrap-sass: 68.07 KB (9.68%)
 Smaller React
 -------------
 
-React will build dev tools by default. You don't need this in production. Use the DefinePlugin to make these dev tools disappear.
+React will build dev tools by default. You don't need this in production. Use the DefinePlugin to make these dev tools disappear. This saves you around 30kb.
 
 ```js
 plugins: [
