@@ -71,8 +71,7 @@ var webpack = require('webpack')
 
 module.exports = {
   entry: {
-    app: './app.js',
-    vendor: ['jquery', 'underscore', ...]
+    app: './app.js'
   },
 
   output: {
@@ -80,15 +79,17 @@ module.exports = {
   },
 
   plugins: [
-    new webpack.optimize.CommonsChunkPlugin('vendor')
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor.js',
+      minChunks: ({ resource }) => /node_modules/.test(resource)
+    })
   ]
 }
 ```
 
 How this works:
 
-- We make a `vendor` entry point and load it with some libraries
-- CommonsChunkPlugin will remove these libraries from `app.js` (because it appears in 2 bundles now)
+- CommonsChunkPlugin will remove all libraries from `app.js` that are inside `node_modules` and bundle them into `vendor.js`
 - CommonsChunkPlugin also moves the Webpack runtime into `vendor.js`
 
 > Reference: [Code splitting](https://webpack.github.io/docs/code-splitting.html#split-app-and-vendor-code)
