@@ -5,15 +5,17 @@ Just a small catalog of Webpack tips and tricks I've learned.
 Table of contents
 -----------------
 
-* [Progress reporting](#progress-reporting)
-* [Minification](#minification)
-* [Multiple bundles](#multiple-bundles)
-* [Split app and vendor code](#split-app-and-vendor-code)
-* [Source maps](#source-maps)
-* [CSS](#css)
-* [Development mode](#development-mode)
-* [Investigating bundle sizes](#investigating-bundle-sizes)
-* [Smaller React](#smaller-react)
+  * [Table of contents](#table-of-contents)
+  * [Progress reporting](#progress-reporting)
+  * [Minification](#minification)
+  * [Multiple bundles](#multiple-bundles)
+  * [Split app and vendor code](#split-app-and-vendor-code)
+  * [Source maps](#source-maps)
+  * [CSS](#css)
+  * [Development mode](#development-mode)
+  * [Investigating bundle sizes](#investigating-bundle-sizes)
+  * [Smaller React](#smaller-react)
+  * [Requiring all files in a folder](#requiring-all-files-in-a-folder)
 
 Progress reporting
 ------------------
