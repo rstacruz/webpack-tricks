@@ -139,7 +139,7 @@ Be sure to invoke Webpack as `env NODE_ENV=production webpack -p` when building 
 Investigating bundle sizes
 --------------------------
 
-Want to see what dependencies are the largest? Use [webpack-bundle-size-analyzer](https://github.com/robertknight/webpack-bundle-size-analyzer).
+Want to see what dependencies are the largest? Use webpack-bundle-size-analyzer.
 
 ```js
 $ yarn global add webpack-bundle-size-analyzer
@@ -153,6 +153,8 @@ parsleyjs: 87.88 KB (12.5%)
 bootstrap-sass: 68.07 KB (9.68%)
 ...
 ```
+
+> Reference: [webpack-bundle-size-analyzer](https://github.com/robertknight/webpack-bundle-size-analyzer)
 
 Smaller React
 -------------
@@ -170,3 +172,23 @@ plugins: [
 ```
 
 Be sure to invoke Webpack as `env NODE_ENV=production webpack -p` when building your production assets.
+
+Requiring all files in a folder
+-------------------------------
+
+Ever wanted to do this?
+
+```js
+require('./behaviors/*')  /* Doesn't work! */
+```
+
+Use require.context.
+
+```js
+// http://stackoverflow.com/a/30652110/873870
+function requireAll (r) { r.keys().forEach(r) }
+
+requireAll(require.context('./behaviors/', true, /\.js$/))
+```
+
+> Reference: [require.context](http://webpack.github.io/docs/context.html#require-context)
