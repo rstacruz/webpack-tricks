@@ -1,6 +1,6 @@
 # Webpack tricks
 
-Just a small catalog of Webpack tips and tricks I've learned.
+Just a small catalog of Webpack tips and tricks I've learned. All of those tips and tricks concern Webpack 1. Webpack 2 has a different API, so some of those tips won't work there. A detailed guide about migrating to v2 [can be found here](http://javascriptplayground.com/blog/2016/10/moving-to-webpack-2/).
 
 Table of contents
 -----------------
