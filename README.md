@@ -15,6 +15,7 @@ Table of contents
   * [Development mode](#development-mode)
   * [Investigating bundle sizes](#investigating-bundle-sizes)
   * [Smaller React](#smaller-react)
+  * [Smaller Lodash](#smaller-lodash)
   * [Requiring all files in a folder](#requiring-all-files-in-a-folder)
 
 Progress reporting
@@ -174,6 +175,26 @@ plugins: [
 ```
 
 Be sure to invoke Webpack as `env NODE_ENV=production webpack -p` when building your production assets.
+
+Smaller Lodash
+-------------
+
+[Lodash](https://lodash.com/) is very useful but usually we only need a small part of its full functionality. [lodash-webpack-plugin](https://github.com/lodash/lodash-webpack-plugin) can help you shrink the lodash build by replacing [feature sets](https://github.com/lodash/lodash-webpack-plugin#feature-sets) of modules with [noop](https://lodash.com/docs#noop), [identity](https://lodash.com/docs#identity), or simpler alternatives.
+
+```js
+const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
+
+const config = {
+  plugins: [
+    new LodashModuleReplacementPlugin({
+      path: true,
+      flattening: true
+    })
+  ]
+};
+```
+
+This may save you >10kb depending on how much you use lodash.
 
 Requiring all files in a folder
 -------------------------------
