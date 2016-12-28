@@ -141,13 +141,11 @@ Be sure to invoke Webpack as `env NODE_ENV=production webpack -p` when building 
 Investigating bundle sizes
 --------------------------
 
-Want to see what dependencies are the largest? Use webpack-bundle-size-analyzer.
+Want to see what dependencies are the largest? You can use webpack-bundle-size-analyzer.
 
 ```js
 $ yarn global add webpack-bundle-size-analyzer
-```
 
-```js
 $ ./node_modules/.bin/webpack --json | webpack-bundle-size-analyzer
 jquery: 260.93 KB (37.1%)
 moment: 137.34 KB (19.5%)
@@ -156,7 +154,15 @@ bootstrap-sass: 68.07 KB (9.68%)
 ...
 ```
 
-> Reference: [webpack-bundle-size-analyzer](https://github.com/robertknight/webpack-bundle-size-analyzer)
+If you're generating source maps (you should), you can also use source-map-explorer, which also works outside of Webpack.
+
+```js
+$ yarn global add source-map-explorer
+
+$ source-map-explorer bundle.min.js bundle.min.js.map
+```
+
+> Reference: [webpack-bundle-size-analyzer](https://github.com/robertknight/webpack-bundle-size-analyzer), [source-map-explorer](https://www.npmjs.com/package/source-map-explorer)
 
 Smaller React
 -------------
