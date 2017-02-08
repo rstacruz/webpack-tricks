@@ -16,6 +16,7 @@ Table of contents
   * [Smaller React](#smaller-react)
   * [Smaller Lodash](#smaller-lodash)
   * [Requiring all files in a folder](#requiring-all-files-in-a-folder)
+  * [Clean up extract-text-webpack-plugin log](#clean-up-extract-text-webpack-plugin-log)
 
 Progress reporting
 ------------------
@@ -220,3 +221,28 @@ requireAll(require.context('./behaviors/', true, /\.js$/))
 ```
 
 > Reference: [require.context](http://webpack.github.io/docs/context.html#require-context)
+
+Clean up extract-text-webpack-plugin log
+----------------------------------------
+
+If you're seeing this in your debug log when using [extract-text-webpack-plugin](https://www.npmjs.com/package/extract-text-webpack-plugin):
+
+```
+Child extract-text-webpack-plugin:
+        + 2 hidden modules
+Child extract-text-webpack-plugin:
+        + 2 hidden modules
+Child extract-text-webpack-plugin:
+        + 2 hidden modules
+```
+
+Turn it off using `stats: { children: false }`.
+
+```js
+/* webpack.config.js */
+stats: {
+  children: false,
+},
+```
+
+> Reference: [extract-text-webpack-plugin#35](https://github.com/webpack-contrib/extract-text-webpack-plugin/issues/35)
