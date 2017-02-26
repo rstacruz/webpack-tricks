@@ -126,12 +126,20 @@ Source maps (Webpack 2)
 The best source maps option is `cheap-module-source-map`. The cheap-module-eval-source-map strategy no longer shows correct traces in Chrome/Firefox.
 
 ```js
-// Webpack 1 only
+// Webpack 2 only
 const DEBUG = process.env.NODE_ENV !== 'production'
 
 module.exports = {
-  debug: DEBUG ? true : false,
   devtool: DEBUG ? 'cheap-module-source-map' : 'hidden-source-map'
+}
+```
+
+If you're using [extract-text-webpack-plugin](https://www.npmjs.com/package/extract-text-webpack-plugin), use `'source-map'` instead. CSS sourcemaps won't work otherwise.
+
+```js
+// Only if you're using extract-text-webpack-plugin
+module.exports = {
+  devtool: DEBUG ? 'source-map' : 'hidden-source-map'
 }
 ```
 
