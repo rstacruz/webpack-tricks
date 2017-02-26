@@ -207,13 +207,17 @@ React will build dev tools by default. You don't need this in production. Use th
 
 ```js
 plugins: [
-  new webpack.EnvironmentPlugin(['NODE_ENV'])
+  new webpack.EnvironmentPlugin({
+    NODE_ENV: 'development'
+  })
 ]
 ```
 
 __Webpack 1:__ Be sure to invoke Webpack as `env NODE_ENV=production webpack -p` when building your production assets.
 
 __Webpack 2:__ Invoke Webpack as `webpack -p` when building your production assets. `NODE_ENV` is automatically set by Webpack.
+
+> Reference: [EnvironmentPlugin documentation](https://webpack.js.org/plugins/environment-plugin/)
 
 Smaller Lodash
 --------------
