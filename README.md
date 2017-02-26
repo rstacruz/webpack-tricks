@@ -9,7 +9,8 @@ Table of contents
   * [Minification](#minification)
   * [Multiple bundles](#multiple-bundles)
   * [Split app and vendor code](#split-app-and-vendor-code)
-  * [Source maps](#source-maps)
+  * [Source maps (Webpack 1)](#source-maps-webpack-1)
+  * [Source maps (Webpack 2)](#source-maps-webpack-2)
   * [CSS](#css)
   * [Development mode](#development-mode)
   * [Investigating bundle sizes](#investigating-bundle-sizes)
@@ -30,7 +31,7 @@ Invoke Webpack with:
 Minification
 ------------
 
-Invoke Webpack with `-p` for production builds.
+Invoke Webpack with `-p` for production builds. In Webpack 2, this also automatically sets `process.env.NODE_ENV === 'production'`.
 
 ```js
 webpack -p
@@ -94,12 +95,13 @@ How this works:
 
 > Reference: [Code splitting](https://webpack.github.io/docs/code-splitting.html#split-app-and-vendor-code)
 
-Source maps
------------
+Source maps (Webpack 1)
+-----------------------
 
 The best source maps option is `cheap-module-eval-source-map`. This shows original source files in Chrome/Firefox dev tools. It's faster than `source-map` and `eval-source-map`.
 
 ```js
+// Webpack 1 only
 const DEBUG = process.env.NODE_ENV !== 'production'
 
 module.exports = {
@@ -111,12 +113,37 @@ module.exports = {
 Your files will now show up in Chrome Devtools as `webpack:///foo.js?a93h`. We want this to be cleaner like `webpack:///path/to/foo.js`.
 
 ```js
-  output: {
-    devtoolModuleFilenameTemplate: 'webpack:///[absolute-resource-path]'
-  }
+output: {
+	devtoolModuleFilenameTemplate: 'webpack:///[absolute-resource-path]'
+}
 ```
 
 > Reference: [devtool documentation](https://webpack.github.io/docs/configuration.html#devtool)
+
+Source maps (Webpack 2)
+-----------------------
+
+The best source maps option is `cheap-module-source-map`. The cheap-module-eval-source-map strategy no longer shows correct traces in Chrome/Firefox.
+
+```js
+// Webpack 1 only
+const DEBUG = process.env.NODE_ENV !== 'production'
+
+module.exports = {
+  debug: DEBUG ? true : false,
+  devtool: DEBUG ? 'cheap-module-source-map' : 'hidden-source-map'
+}
+```
+
+Your files will now show up in Chrome Devtools as `webpack:///foo.js?a93h`. We want this to be cleaner like `webpack:///path/to/foo.js`.
+
+```js
+output: {
+	devtoolModuleFilenameTemplate: 'webpack:///[absolute-resource-path]'
+}
+```
+
+> Reference: [devtool documentation](https://webpack.js.org/configuration/devtool/#devtool)
 
 CSS
 ---
@@ -131,13 +158,21 @@ Want to have certain options only appear in development mode?
 ```js
 const DEBUG = process.env.NODE_ENV !== 'production'
 
+// Webpack 1
 module.exports = {
   debug: DEBUG ? true : false,
   devtool: DEBUG ? 'cheap-module-eval-source-map' : 'hidden-source-map'
 }
+
+// Webpack 2
+module.exports = {
+  devtool: DEBUG ? 'cheap-module-source-map' : 'hidden-source-map'
+}
 ```
 
-Be sure to invoke Webpack as `env NODE_ENV=production webpack -p` when building your production assets.
+__Webpack 1:__ Be sure to invoke Webpack as `env NODE_ENV=production webpack -p` when building your production assets.
+
+__Webpack 2:__ Invoke Webpack as `webpack -p` when building your production assets. `NODE_ENV` is automatically set by Webpack.
 
 Investigating bundle sizes
 --------------------------
@@ -180,10 +215,12 @@ plugins: [
 ]
 ```
 
-Be sure to invoke Webpack as `env NODE_ENV=production webpack -p` when building your production assets.
+__Webpack 1:__ Be sure to invoke Webpack as `env NODE_ENV=production webpack -p` when building your production assets.
+
+__Webpack 2:__ Invoke Webpack as `webpack -p` when building your production assets. `NODE_ENV` is automatically set by Webpack.
 
 Smaller Lodash
--------------
+--------------
 
 [Lodash](https://lodash.com/) is very useful but usually we only need a small part of its full functionality. [lodash-webpack-plugin](https://github.com/lodash/lodash-webpack-plugin) can help you shrink the lodash build by replacing [feature sets](https://github.com/lodash/lodash-webpack-plugin#feature-sets) of modules with [noop](https://lodash.com/docs#noop), [identity](https://lodash.com/docs#identity), or simpler alternatives.
 
