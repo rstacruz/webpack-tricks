@@ -203,15 +203,11 @@ $ source-map-explorer bundle.min.js bundle.min.js.map
 Smaller React
 -------------
 
-React will build dev tools by default. You don't need this in production. Use the DefinePlugin to make these dev tools disappear. This saves you around 30kb.
+React will build dev tools by default. You don't need this in production. Use the EnvironmentPlugin to make these dev tools disappear. This saves you around 30kb.
 
 ```js
 plugins: [
-  new webpack.DefinePlugin({
-    'process.env': {
-      'NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
-    }
-  })
+  new webpack.EnvironmentPlugin(['NODE_ENV'])
 ]
 ```
 
