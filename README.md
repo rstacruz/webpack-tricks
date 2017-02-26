@@ -11,7 +11,7 @@ Table of contents
   * [Split app and vendor code](#split-app-and-vendor-code)
   * [Source maps (Webpack 1)](#source-maps-webpack-1)
   * [Source maps (Webpack 2)](#source-maps-webpack-2)
-  * [CSS](#css)
+  * [Output CSS files](#output-css-files)
   * [Development mode](#development-mode)
   * [Investigating bundle sizes](#investigating-bundle-sizes)
   * [Smaller React](#smaller-react)
@@ -153,10 +153,10 @@ output: {
 
 > Reference: [devtool documentation](https://webpack.js.org/configuration/devtool/#devtool)
 
-CSS
----
+Output CSS files
+----------------
 
-It's complicated. TBD
+This is complicated, and the guide [can be found here](recipes/css.md).
 
 Development mode
 ----------------
