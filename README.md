@@ -1,6 +1,6 @@
 # Webpack tricks
 
-Just a small catalog of Webpack tips and tricks I've learned. All of those tips and tricks concern Webpack 1. Webpack 2 has a different API, so some of those tips won't work there. A detailed guide about migrating to v2 [can be found here](http://javascriptplayground.com/blog/2016/10/moving-to-webpack-2/).
+Just a small catalog of Webpack tips and tricks I've learned. These tricks work with Webpack v3 unless otherwise specified.
 
 <br>
 
@@ -20,7 +20,7 @@ Table of contents
   * [Multiple bundles](#multiple-bundles)
   * [Split app and vendor code](#split-app-and-vendor-code)
   * [Source maps (Webpack 1)](#source-maps-webpack-1)
-  * [Source maps (Webpack 2)](#source-maps-webpack-2)
+  * [Source maps (Webpack 2-3)](#source-maps-webpack-2-3)
   * [Output CSS files](#output-css-files)
   * [Development mode](#development-mode)
   * [Investigating bundle sizes](#investigating-bundle-sizes)
@@ -130,8 +130,8 @@ output: {
 
 > Reference: [devtool documentation](https://webpack.github.io/docs/configuration.html#devtool)
 
-Source maps (Webpack 2)
------------------------
+Source maps (Webpack 2-3)
+-------------------------
 
 The best source maps option is `cheap-module-source-map`. The cheap-module-eval-source-map strategy no longer shows correct traces in Chrome/Firefox.
 
@@ -157,7 +157,7 @@ Your files will now show up in Chrome Devtools as `webpack:///foo.js?a93h`. We w
 
 ```js
 output: {
-	devtoolModuleFilenameTemplate: 'webpack:///[absolute-resource-path]'
+  devtoolModuleFilenameTemplate: 'webpack:///[absolute-resource-path]'
 }
 ```
 
