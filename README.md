@@ -2,16 +2,6 @@
 
 Just a small catalog of Webpack tips and tricks I've learned. These tricks work with Webpack v3 unless otherwise specified.
 
-<br>
-
-*****
-
-<a target='_blank' rel='nofollow' href='https://app.codesponsor.io/link/mpgUepSsuAMdpQbEST7TWH6T/rstacruz/webpack-tricks'>  <img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/mpgUepSsuAMdpQbEST7TWH6T/rstacruz/webpack-tricks.svg' /></a>
-
-*****
-
-<br>
-
 Table of contents
 -----------------
 
